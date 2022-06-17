@@ -29,7 +29,7 @@ public class ConnectionPool {
 	 * @throws SQLException
 	 */
 	
-	Connection getConnection() {
+	public Connection getConnection() {
 
 		try {
 			Class.forName("org.postgresql.Driver").newInstance();

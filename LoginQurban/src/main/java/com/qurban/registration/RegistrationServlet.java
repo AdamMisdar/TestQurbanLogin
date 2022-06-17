@@ -6,6 +6,8 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 import java.sql.*;
 
+import com.qurban.dao.impl.ConnectionPool;
+
 
 @WebServlet("/register")
 public class RegistrationServlet extends HttpServlet {
@@ -36,8 +38,11 @@ public class RegistrationServlet extends HttpServlet {
 		out.print(client_mobile);
 */		
 		try {
-			Class.forName("org.postgresql.Driver");
+		/*	Class.forName("org.postgresql.Driver");
 			connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/QurbanDatabase?useSSL=false", "postgres", "system");
+		*/	
+			connection = ConnectionPool.getInstance().getConnection();
+			
 			// SQL Query
 			PreparedStatement pst = connection.prepareStatement("insert into client(client_username,client_password,client_email,client_mobile) values (?,?,?,?)");
 			pst.setString(1, client_username);
