@@ -4,6 +4,9 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
+
+import com.qurban.dao.impl.ConnectionPool;
+
 import java.sql.*;
 
 
@@ -32,8 +35,11 @@ public class LoginServlet extends HttpServlet {
 		RequestDispatcher dispatcher = null;
 		
 		try {
-			Class.forName("org.postgresql.Driver");
+		/*	Class.forName("org.postgresql.Driver");
 			connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/QurbanDatabase?useSSL=false", "postgres", "system");
+		*/	
+			
+			connection = ConnectionPool.getInstance().getConnection();
 			
 			//SQL Statement/Query 
 			PreparedStatement pst = connection.prepareStatement("select * from client where client_email = ? and client_password = ?");
