@@ -46,8 +46,8 @@ public class RegistrationServlet extends HttpServlet {
 			// SQL Query
 			PreparedStatement pst = connection.prepareStatement("insert into client(client_username,client_password,client_email,client_mobile) values (?,?,?,?)");
 			pst.setString(1, client_username);
-			pst.setString(2, client_email);
-			pst.setString(3, client_password);
+			pst.setString(2, client_password);
+			pst.setString(3, client_email);
 			pst.setString(4, client_mobile);
 			
 			//Non-select query - return the number of rows affected - execute query
