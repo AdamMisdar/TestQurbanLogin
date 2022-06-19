@@ -1,7 +1,6 @@
 package com.qurban.dao.impl;
 
 import java.sql.*;
-
 import javax.naming.*;
 import javax.sql.*;
 
